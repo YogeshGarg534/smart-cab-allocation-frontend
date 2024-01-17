@@ -10,19 +10,19 @@ const Map = ({cabsarray}) => {
       container: mapContainer.current,
       style:
         "https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL",
-      center: [23.8167384, 86.4404441],
+      center: [cabsarray[0].longitude,cabsarray[0].latitude],
       zoom: 12,
     });
     console.log('Test 1',cabsarray);
-    new maplibregl.Marker().setLngLat([23.8167384,86.4404441]).addTo(map);
-    // cabsarray.forEach(d => {
-    //    new maplibregl.Marker().setLngLat([d.longitude, d.latitude]).addTo(map);
-    // })
+    //new maplibregl.Marker().setLngLat([longitude,latitude]).addTo(map);
+    cabsarray.forEach(d => {
+       new maplibregl.Marker().setLngLat([d.longitude, d.latitude]).addTo(map);
+    })
 
      return () => map.remove();
-  }, []);
+  }, [cabsarray]);
 
-  return <div ref={mapContainer} style={{ margin:"0 auto 0 auto", width: "90%", height: "400px" }} />;
+  return <div ref={mapContainer} style={{ width: "90%", height: "400px" }} />;
 };
 
 export default Map;

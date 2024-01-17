@@ -8,7 +8,7 @@ const Register = () => {
   const [inputPassword, setInputPassword] = useState("");
 
 
-  const history = useHistory();
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,7 +18,7 @@ const Register = () => {
         username:inputUsername,
         password:inputPassword
     }).then(() => {
-        history.push('/login');
+      window.location.href = "/"
     }).catch(err => {
         console.log(err);
 
@@ -35,7 +35,7 @@ const Register = () => {
       <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
         <div className="h4 mb-2 text-center">Sign Up</div>
         <Form.Group className="mb-2" controlId="username">
-          <Form.Label>User</Form.Label>
+          <Form.Label>Username</Form.Label>
           <Form.Control
             type="text"
             value={inputUsername}
